@@ -3,7 +3,6 @@
 declare -a assets=("eden" "woc" "common" "brand")
 
 for j in "${assets[@]}"; do
-	echo $j
 	cd ./${j}
 	shopt -s nullglob
 	for i in *.jpg *.JPG *.png *.PNG; do
