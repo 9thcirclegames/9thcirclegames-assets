@@ -1,11 +1,10 @@
-language: python
-python:
-  - "3.5"
-cache: pip
-install:
-  # Install any dependencies required for building thumbnails here.
-  # `awscli` is required for invalidation of CloudFront distributions.
-  - pip install awscli
+language: ruby
+rvm:
+  - 2.1
+# Install any dependencies needed to build thumbnails here
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y imagemagick
 deploy:
   provider: s3
   access_key_id: AKIAJRMA5YKNJZ4IXPOA
@@ -15,6 +14,7 @@ deploy:
   skip_cleanup: true
   region: eu-west-1
   acl: public_read
+  detect_encoding: true
   on:
     repo: 9thcirclegames/9thcirclegames-assets
     branch: master
