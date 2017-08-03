@@ -1,5 +1,4 @@
 #!/bin/bash
-set -x
 
 declare -a assets=("eden" "woc" "common" "brand")
 
