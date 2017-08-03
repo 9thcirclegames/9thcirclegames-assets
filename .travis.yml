@@ -1,22 +1,25 @@
 language: ruby
 rvm:
-    - 2.1
+- 2.1
 before_install:
-    - sudo apt-get -qq update
-    - sudo apt-get install -y imagemagick
+- sudo apt-get -qq update
+- sudo apt-get install -y imagemagick
 script:
-    - bash _scripts/test.sh
-    - bash _scripts/build.sh
+- bash _scripts/test.sh
+- bash _scripts/build.sh
 deploy:
-    provider: s3
-    access_key_id: AKIAJRMA5YKNJZ4IXPOA
-    secret_access_key:
-        secure: W/Cfrf39f31i+BYEMD40XdA6uonTYu2rcHAko36Y8T7pCq6n2ILyattiEWXlHYL1IDTxXfHkgsakBWWmPO1lw9bgofUsctILRMiSQUNPhBx4qZjfs645/vqdeBEus4at+3oT/yVHtzfol98IjfxR290E/nkniVrDIKl7f2VFLytsx4qJnlypa5dexELKs56Xm5fdMKYb6PW5CapSNK7MJrC4/zLLlclr19NgY3YOuckcN91Ga3W6CSgZ2E5ojtvyR4/VdrA6/uxGdEjMCC+9jHS/hhfUlupjo3WePBGw52W0MMM2C8Kkr1sMzpPiipBhuR7yn64Zj6eCBkon0ldF63fSW5IbfeP6HRFFglFMvranHzpPtVOTMcVAeS6kZhdGOI5i6oHx5YkFthlYpl2bmMyg1v5H87T6ohQy8yMx8+IpVQoGa5O7WdjeRYO+SqvUfgxUc7HS+IV60wdbjVGjhxzlmPBbhpeFWfhjjdrsrWNejD16HGJYj+0D6Y3P9hTn3qGTUlyTuz/rejzsw5UenHOyXC80qGxMeBOHGX300mcrpeIRKbbYv+enjX+XR0ABbhcxOpDfOH1NBxIRwioKHWuMEXiCnBnZPh37B95ucla9aagnpnXOt26tkgBYMkZB0MM3E9/d8TTJfutpvfFuUyYAmF93L3X4RvXv9aZaAHA=
-    bucket: static.9thcircle.it
-    skip_cleanup: true
-    region: eu-west-1
-    acl: public_read
-    detect_encoding: true
-    on:
-        repo: 9thcirclegames/9thcirclegames-assets
-        branch: master
+  provider: s3
+  access_key_id: AKIAJRMA5YKNJZ4IXPOA
+  secret_access_key:
+    secure: W/Cfrf39f31i+BYEMD40XdA6uonTYu2rcHAko36Y8T7pCq6n2ILyattiEWXlHYL1IDTxXfHkgsakBWWmPO1lw9bgofUsctILRMiSQUNPhBx4qZjfs645/vqdeBEus4at+3oT/yVHtzfol98IjfxR290E/nkniVrDIKl7f2VFLytsx4qJnlypa5dexELKs56Xm5fdMKYb6PW5CapSNK7MJrC4/zLLlclr19NgY3YOuckcN91Ga3W6CSgZ2E5ojtvyR4/VdrA6/uxGdEjMCC+9jHS/hhfUlupjo3WePBGw52W0MMM2C8Kkr1sMzpPiipBhuR7yn64Zj6eCBkon0ldF63fSW5IbfeP6HRFFglFMvranHzpPtVOTMcVAeS6kZhdGOI5i6oHx5YkFthlYpl2bmMyg1v5H87T6ohQy8yMx8+IpVQoGa5O7WdjeRYO+SqvUfgxUc7HS+IV60wdbjVGjhxzlmPBbhpeFWfhjjdrsrWNejD16HGJYj+0D6Y3P9hTn3qGTUlyTuz/rejzsw5UenHOyXC80qGxMeBOHGX300mcrpeIRKbbYv+enjX+XR0ABbhcxOpDfOH1NBxIRwioKHWuMEXiCnBnZPh37B95ucla9aagnpnXOt26tkgBYMkZB0MM3E9/d8TTJfutpvfFuUyYAmF93L3X4RvXv9aZaAHA=
+  bucket: static.9thcircle.it
+  skip_cleanup: true
+  region: eu-west-1
+  acl: public_read
+  detect_encoding: true
+  on:
+    repo: 9thcirclegames/9thcirclegames-assets
+    branch: master
+notifications:
+  slack:
+    secure: FL3WihkxQyW14wXtUZ5zXKAZLUmAbJDPsLEwyArBFOfcU82JyEvfXyMCBwi6iRFHf7EDtYUF06BfuqHxL4qXO5zJuhcpqTikQltPkCom4WLINg29VdG038H2gsTGTVoUhrBC3REWeEfkXXOzL//E2dReJvHKdGoXXXEiGpD/WyGrr98e3gvXY+d21MBE6KhIAH2uaLBHD14Y8ZXo8tZZWfGnqe6c3qpdUKFci/tKTZPMqVR4+bqjdUjE5NSoU9FEoPQUnJZmXbnFGRPB+70wLayknfMkvysPi9i/FDdSW5lAenXEUJb5eKr5eseS4/hKIJ7nPucK2MY+XPt6xyEYX6DdYOcjqh8RujbsspfBqgwlizU80ISX+uunRMZ47XSUIlb6QIgcNJ+M2K+Gv6PfJnrykyjriL/mFyO3ADwUmdjQQuWWRoiiYwvzd0w4Kgv7v4A3ULzcImxXqdu8gu0qCDiGaMTi2HgXbHzBsBPGHARcL2PXpt3S9iue+itrnlbzLhjOhGzaZo+jqQBtr0l8v7TvwnlYCxhVf5keSHl/41qOakfQ123h2zIAZvJKov0pJ9Ud/DMizU4O6AIM/rngMekTba54P1rj/C2OOBvR+q5pAl4KFV5j88faDjG2VKV4/dLyXEX8G4uiREFyVCCelwzavzS6GJM1w3zdwMpGlLs=
