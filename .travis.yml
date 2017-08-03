@@ -5,8 +5,8 @@ before_install:
     - sudo apt-get -qq update
     - sudo apt-get install -y imagemagick
 script:
-    - bash _scripts/build.sh
     - bash _scripts/test.sh
+    - bash _scripts/build.sh
 deploy:
     provider: s3
     access_key_id: AKIAJRMA5YKNJZ4IXPOA
