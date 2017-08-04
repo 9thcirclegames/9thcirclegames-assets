@@ -9,6 +9,12 @@ for j in "${assets[@]}"; do
 		filename=$(basename "$i")
 		extension="${filename##*.}"
 		filename="${filename%.*}"
+		
+		# Retina files are not resized
+		if [[ ${filename} == *"@2x"* ]]; then
+  			continue
+		fi
+		
 		convert            \
   		$i                 \
  		-quality 90        \
