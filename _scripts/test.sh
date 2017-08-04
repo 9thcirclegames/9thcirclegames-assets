@@ -19,7 +19,8 @@ for j in "${assets[@]}"; do
 		fi
    		
    		if [ ! -f ${filename}@2x.${extension} ]; then
-    		echo "WARNING: Hi-res retina version not found for file ${i}."
+    		echo "WARNING: Hi-res retina version not found for file ${i}. Expected filename: ${filename}@2x.${extension}"
+    		continue
 		fi
    		
    		echo "INFO: Checking ${i}...passed"
