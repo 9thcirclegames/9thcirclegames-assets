@@ -1,12 +1,13 @@
-language: ruby
+language: python
 rvm:
-- 2.1
-before_install:
-- sudo apt-get -qq update
-- sudo apt-get install -y imagemagick
+- 2.7
+addons:
+  apt:
+    packages:
+    - imagemagick
 script:
-- bash _scripts/test.sh
 - bash _scripts/build.sh
+- bash _scripts/test.sh
 deploy:
   provider: s3
   access_key_id: AKIAJRMA5YKNJZ4IXPOA
